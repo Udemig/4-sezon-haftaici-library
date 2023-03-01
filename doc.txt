@@ -1,0 +1,17 @@
+Library App:
+
+A. Uygulamanın Amacı:
+    Kitapların kategorilerine göre ayrılarak kayıt altına alınmasını
+    sağlayacak bir uygulama olacaktır. Uygulamada hem kitaplar için hem
+    de kategorileri için CRUD (Create-Read-Update-Delete) işlemleri
+    yapılabilecektir.
+
+B. İş Sırası:
+
+    1. Dependencies:
+        - Json-server
+        - axios
+        - redux, react-redux
+        - UI kütüphanesi olarak bootstrap kullanılacak.
+        - react-router-dom
+    2. Veri yapısının ve json-server yapısının kurulması:

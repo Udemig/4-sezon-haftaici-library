@@ -1,0 +1,23 @@
+{
+    "books":[
+        {
+            "id":"1",
+            "title":"zamanın farkında",
+            "author":"şule gürbüz",
+            "publisher":"iletişim",
+            "price":70,
+            "isbn":"9789750509292",
+            "categoryId": "2"
+        }
+    ],
+    "categories":[
+        {
+            "id":"1",
+            "name":"roman"
+        },
+        {
+            "id":"2",
+            "name":"hikaye"
+        }
+    ]
+}
