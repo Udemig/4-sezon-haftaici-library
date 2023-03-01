@@ -15,3 +15,6 @@ B. İş Sırası:
         - UI kütüphanesi olarak bootstrap kullanılacak.
         - react-router-dom
     2. Veri yapısının ve json-server yapısının kurulması:
+    3. Redux altyapısının kurulması:
+        - !!!! Store'da bulunacak state'lere karar vermek (daha sonradan
+        da ekleme yapılabilir) (booksState, categoriesState)
