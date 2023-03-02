@@ -3,6 +3,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { upperFirstLetter,upperFirstLetter2 } from "../utils/functions";
+import Button from "./Button";
 
 const ListBooks = () => {
   const { booksState, categoriesState } = useSelector((state) => state);
@@ -16,7 +17,7 @@ const ListBooks = () => {
         </div>
       )}
       {booksState.books.length > 0 && (
-        <div className="container my-5">
+        <div>
           <table className="table table-striped">
             <thead>
               <tr>
@@ -40,15 +41,9 @@ const ListBooks = () => {
                       <div
                         className="btn-group"
                         role="group">
-                        <button type="button" className="btn btn-sm btn-secondary">
-                          Detay
-                        </button>
-                        <button type="button" className="btn btn-sm btn-danger">
-                          Sil
-                        </button>
-                        <button type="button" className="btn btn-sm btn-warning">
-                          Güncelle
-                        </button>
+                        <Button className="btn-sm" text="Detay" type="secondary" />
+                        <Button className="btn-sm" text="Sil" type="danger" />
+                        <Button className="btn-sm" text="Detay" type="warning" />
                       </div>
                     </td>
                   </tr>
