@@ -18,8 +18,6 @@ function App() {
   const categoriesState=useSelector(state => state.categoriesState) */
   const { booksState, categoriesState } = useSelector((state) => state);
   const dispatch = useDispatch();
-  console.log("booksState",booksState);
-  console.log("categoriesState",categoriesState);
 
   useEffect(() => {
     /* get books */
@@ -32,7 +30,7 @@ function App() {
             type: actionTypes.bookActions.GET_BOOKS_SUCCESS,
             payload: res.data,
           });
-        }, 2000);
+        }, 1000);
       })
       .catch((err) => {
         dispatch({
@@ -50,7 +48,7 @@ function App() {
             type: actionTypes.categoryActions.GET_CATEGORIES_SUCCESS,
             payload: res.data,
           });
-        }, 2000);
+        }, 1000);
       })
       .catch((err) => {
         dispatch({
