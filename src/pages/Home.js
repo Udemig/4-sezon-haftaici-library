@@ -1,12 +1,13 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
 
 const Home=()=>{
     return(
         <div>
+            <Header />
             <h1>Anasayfa</h1>
-            <Link to={"/add-book"}>Kitap Ekle</Link>
         </div>
     )
 }
