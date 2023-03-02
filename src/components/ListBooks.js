@@ -43,7 +43,7 @@ const ListBooks = () => {
                         role="group">
                         <Button className="btn-sm" text="Detay" type="secondary" />
                         <Button className="btn-sm" text="Sil" type="danger" />
-                        <Button className="btn-sm" text="Detay" type="warning" />
+                        <Button className="btn-sm" text="Güncelle" type="warning" />
                       </div>
                     </td>
                   </tr>
