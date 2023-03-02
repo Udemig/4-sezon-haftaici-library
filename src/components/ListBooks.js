@@ -2,6 +2,8 @@ import React from "react";
 
 import { useSelector } from "react-redux";
 
+import { upperFirstLetter,upperFirstLetter2 } from "../utils/functions";
+
 const ListBooks = () => {
   const { booksState, categoriesState } = useSelector((state) => state);
   return (
@@ -32,8 +34,8 @@ const ListBooks = () => {
                 return (
                   <tr key={book.id}>
                     <th scope="row">{index + 1}</th>
-                    <td>{book.title}</td>
-                    <td>{myCategory.name}</td>
+                    <td>{upperFirstLetter2(book.title)}</td>
+                    <td>{upperFirstLetter(myCategory.name)}</td>
                     <td>
                       <div
                         className="btn-group"
