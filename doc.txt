@@ -20,3 +20,22 @@ B. İş Sırası:
         da ekleme yapılabilir) (booksState, categoriesState)
     4. Router yapısının kurulması
     5. Uygulama açılırken redux içerisindeki stateleri doldurmak.
+
+    6. AddBook senaryosu:
+        - Bu sayfanın amacı kullanıcıdan kitap bilgileri alıp,
+        server'a gönderip kaydettirmektir.
+        - Bunun için kitap bilgilerini alacak bir form'a ihtiyaç vardır.
+        - Alınan bilgiler server'a başarıyla kaydedildikten sonra AYNI ekleme
+        İŞLEMİ STORE'A DA YAPILMALIDIR
+
+
+
+
+NOTLAR:
+ -local state = component'ın sadece kendisi için geçerli olan durumların
+ saklandığı state (useState)
+ -global state = uygulama içerisindeki diğer componentların ortak olarak
+ kullanmak isteyecekleri stateler (store)
+
+ -override : ezmek, üzerine yazmak/ öncekini geçersiz kıl; benim yazdığımı
+ geçerli kıl

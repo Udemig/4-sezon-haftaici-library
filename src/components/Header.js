@@ -1,10 +1,21 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+import actionTypes from "../redux/actions/actionTypes";
+import "../styles/general.css";
+import sun from '../assets/sun1.gif'
 
 const Header = () => {
+  const { themeState } = useSelector((state) => state);
+  const dispatch = useDispatch();
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-primary">
+    <nav
+      style={{ position: "relative" }}
+      className={`navbar navbar-expand-sm navbar-dark ${
+        themeState === "light" ? "headerBgLight" : "headerBgDark"
+      }`}>
       <div className="container-fluid">
         <Link className="navbar-brand" to={"/"}>
           Library
@@ -29,8 +40,34 @@ const Header = () => {
           </ul>
         </div>
       </div>
+      <div style={{ position: "absolute", right: "20px" }}>
+        {themeState === "light" ? (
+          <button
+            onClick={() =>
+              dispatch({
+                type: actionTypes.themeActions.CHANGE_THEME,
+                payload: "dark",
+              })
+            }
+            className="btn btn-sm btn-secondary">
+            Dark
+          </button>
+        ) : (
+          <button
+            onClick={() =>
+              dispatch({
+                type: actionTypes.themeActions.CHANGE_THEME,
+                payload: "light",
+              })
+            }
+            className="btn btn-sm btn-warning">
+            <img style={{width:'20px',height:'20px',marginRight:'10px'}} src={sun} />
+            <span>Light</span>
+          </button>
+        )}
+      </div>
     </nav>
   );
 };
 
-export default Header
+export default Header;
