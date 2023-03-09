@@ -3,7 +3,8 @@ const actionTypes={
         GET_BOOKS_START:"GET_BOOKS_START",
         GET_BOOKS_SUCCESS:"GET_BOOKS_SUCCESS",
         GET_BOOKS_FAIL:"GET_BOOKS_FAIL",
-        ADD_BOOK:"ADD_BOOK"
+        ADD_BOOK:"ADD_BOOK",
+        DELETE_BOOK:"DELETE_BOOK"
     },
     categoryActions:{
         GET_CATEGORIES_START:"GET_CATEGORIES_START",

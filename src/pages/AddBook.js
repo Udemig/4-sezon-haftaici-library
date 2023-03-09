@@ -13,11 +13,14 @@ import urls from "../api/urls";
 
 import actionTypes from "../redux/actions/actionTypes";
 
+import Modal from "../components/Modal";
+
 const AddBook = () => {
   const { categoriesState } = useSelector((state) => state);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [openSuccessModal,setOpenSuccessModal]=useState(false)
   const [formState, setFormState] = useState({
     id: String(new Date().getTime()),
     title: "",
@@ -51,7 +54,7 @@ const AddBook = () => {
           type: actionTypes.bookActions.ADD_BOOK,
           payload: formState,
         });
-        navigate("/");
+        setOpenSuccessModal(true)
       })
       .catch((err) => {});
   };
@@ -156,6 +159,17 @@ const AddBook = () => {
           </div>
         </form>
       </div>
+      <Modal
+        title="Başarılı"
+        content="Kitap başarıyla eklendi"
+        cancelButtonText="Anasayfaya Dön"
+        cancelButtonType="success"
+        cancelButtonClick={()=>{
+          setOpenSuccessModal(false)
+          navigate("/")
+        }}
+        visible={openSuccessModal}
+      />
     </div>
   );
 };

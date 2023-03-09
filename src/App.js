@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import AddBook from "./pages/AddBook";
+import BookDetail from "./pages/BookDetail";
 
 import api from "./api/api";
 import urls from "./api/urls";
@@ -65,6 +66,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/add-book" element={<AddBook />} />
+        <Route path="/book-detail/:bookId" element={<BookDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

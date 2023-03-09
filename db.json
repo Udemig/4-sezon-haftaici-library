@@ -19,13 +19,22 @@
       "categoryId": "3"
     },
     {
-      "id": "1678303941491",
-      "title": "gdfg",
-      "author": "dfgdfgdf",
-      "publisher": "sfds",
-      "price": "43",
-      "isbn": "234234234",
-      "categoryId": "1"
+      "id": "1678389736018",
+      "title": "fghfg",
+      "author": "fghf",
+      "publisher": "",
+      "price": "",
+      "isbn": "",
+      "categoryId": "2"
+    },
+    {
+      "id": "1678389846407",
+      "title": "utyut",
+      "author": "tyut",
+      "publisher": "",
+      "price": "",
+      "isbn": "",
+      "categoryId": "3"
     }
   ],
   "categories": [
