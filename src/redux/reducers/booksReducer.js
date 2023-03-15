@@ -50,6 +50,26 @@ const booksReducer = (state = initialState, action) => {
         ...state,
         books: filteredBooks,
       };
+    case actionTypes.bookActions.EDIT_BOOK:
+      /* filter ile */
+      /* const filteredArr=state.books.filter(item => item.id !== action.payload.id)
+      return{
+        ...state,
+        books: [...filteredArr,action.payload]
+      } */
+      /* for ile */
+      const tempArr=[]
+      for(let i=0;i<state.books.length;i++){
+        if(state.books[i].id !== action.payload.id){
+          tempArr.push(state.books[i])
+        }else{
+          tempArr.push(action.payload)
+        }
+      }
+      return{
+        ...state,
+        books: tempArr
+      }
     default:
       return state;
   }

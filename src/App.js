@@ -9,6 +9,8 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import AddBook from "./pages/AddBook";
 import BookDetail from "./pages/BookDetail";
+import EditBook from "./pages/EditBook";
+import CategoriesHome from "./pages/CategoriesHome";
 
 import api from "./api/api";
 import urls from "./api/urls";
@@ -67,6 +69,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/add-book" element={<AddBook />} />
         <Route path="/book-detail/:bookId" element={<BookDetail />} />
+        <Route path="/edit-book/:bookId" element={<EditBook />} />
+        <Route path="/categories" element={<CategoriesHome />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
