@@ -1,10 +1,30 @@
-import React from "react";
+import React,{useState} from "react";
 
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import actionTypes from "../redux/actions/actionTypes";
+import { upperFirstLetter } from "../utils/functions";
+
+import api from "../api/api";
+import urls from "../api/urls";
+
+import Modal from "./Modal";
 
 const ListCategories = () => {
+  const dispatch=useDispatch()
   const { categoriesState, booksState } = useSelector((state) => state);
-  console.log(categoriesState);
+  const [showDeleteModal,setShowDeleteModal]=useState(false)
+  const [willDeleteCategory,setWillDeleteCategory]=useState("")
+
+  const deleteCategory=(id)=>{
+    api.delete(`${urls.categories}/${id}`)
+    .then(res=>{
+      dispatch({type: actionTypes.categoryActions.DELETE_CATEGORY,payload:id})
+      dispatch({type:actionTypes.bookActions.DELETE_BOOKS_AFTER_DELETE_CATEGORY,payload:id})
+      setShowDeleteModal(false)
+    })
+    .catch(err => {})
+  }
+
   return (
     <div>
       {categoriesState.categories.length === 0 && (
@@ -30,20 +50,23 @@ const ListCategories = () => {
               /* const myBooks = booksState.books.filter(
                 (item) => item.categoryId === category.id
               ); */
-              const myBooks=[]
-              for(let i=0;i<booksState.books.length;i++){
-                if(booksState.books[i].categoryId === category.id){
-                    myBooks.push(booksState.books[i])
+              const myBooks = [];
+              for (let i = 0; i < booksState.books.length; i++) {
+                if (booksState.books[i].categoryId === category.id) {
+                  myBooks.push(booksState.books[i]);
                 }
               }
               return (
                 <tr key={category.id}>
                   <th>{siraNo}</th>
-                  <td>{category.name}</td>
+                  <td>{upperFirstLetter(category.name)}</td>
                   <td>{myBooks.length}</td>
                   <td>
                     <div className="btn-group">
-                      <button type="button" className="btn btn-danger btn-sm">
+                      <button onClick={()=>{
+                        setShowDeleteModal(true)
+                        setWillDeleteCategory(category.id)
+                      }} type="button" className="btn btn-danger btn-sm">
                         Sil
                       </button>
                       <button type="button" className="btn btn-warning btn-sm">
@@ -57,6 +80,16 @@ const ListCategories = () => {
           </tbody>
         </table>
       )}
+      <Modal
+        visible={showDeleteModal}
+        title="Silme İşlemi"
+        content="Kategori silindiğinde o kategoriye ait bütün kitaplar da silinir. Devam etmek istediğinize emin misiniz?"
+        cancelButtonText="Vazgeç"
+        cancelButtonClick={()=>setShowDeleteModal(false)}
+        hasConfirmButton={true}
+        confirmButtonText="Sil"
+        confirmButtonClick={()=>deleteCategory(willDeleteCategory)}
+      />
     </div>
   );
 };

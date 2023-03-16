@@ -11,11 +11,13 @@ import AddBook from "./pages/AddBook";
 import BookDetail from "./pages/BookDetail";
 import EditBook from "./pages/EditBook";
 import CategoriesHome from "./pages/CategoriesHome";
+import AddCategory from "./pages/AddCategory";
 
 import api from "./api/api";
 import urls from "./api/urls";
 import Loading from "./components/Loading";
 import Error from "./components/Error";
+
 
 function App() {
   /* const booksState=useSelector(state=>state.booksState)
@@ -71,6 +73,7 @@ function App() {
         <Route path="/book-detail/:bookId" element={<BookDetail />} />
         <Route path="/edit-book/:bookId" element={<EditBook />} />
         <Route path="/categories" element={<CategoriesHome />} />
+        <Route path="/add-category" element={<AddCategory />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

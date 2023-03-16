@@ -36,7 +36,7 @@ const booksReducer = (state = initialState, action) => {
         books: [...state.books, action.payload],
       };
     case actionTypes.bookActions.DELETE_BOOK:
-      let filteredBooks = state.books.filter(
+      var filteredBooks = state.books.filter(
         (item) => item.id !== action.payload
       );
 
@@ -69,6 +69,13 @@ const booksReducer = (state = initialState, action) => {
       return{
         ...state,
         books: tempArr
+      }
+    case actionTypes.bookActions.DELETE_BOOKS_AFTER_DELETE_CATEGORY:
+      /* payload olarak category id'si gelecek */
+      var filteredBooks=state.books.filter(item => item.categoryId !== action.payload)
+      return{
+        ...state,
+        books:filteredBooks
       }
     default:
       return state;

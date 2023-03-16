@@ -39,3 +39,9 @@ NOTLAR:
 
  -override : ezmek, üzerine yazmak/ öncekini geçersiz kıl; benim yazdığımı
  geçerli kıl
+
+ -Next Topics:
+    ->middleware, redux-thunk,logger
+    ->authantication, authorization
+    ->login/register sistemi nasıl işler, frontend tarafında nasıl yönetilir
+    ->token ne demektir (jwt)
