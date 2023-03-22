@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import actionTypes from "./redux/actions/actionTypes";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
@@ -12,17 +12,20 @@ import BookDetail from "./pages/BookDetail";
 import EditBook from "./pages/EditBook";
 import CategoriesHome from "./pages/CategoriesHome";
 import AddCategory from "./pages/AddCategory";
+import EditCategory from "./pages/EditCategory";
+import Login from "./pages/Login";
 
 import api from "./api/api";
 import urls from "./api/urls";
 import Loading from "./components/Loading";
 import Error from "./components/Error";
 
-
 function App() {
   /* const booksState=useSelector(state=>state.booksState)
   const categoriesState=useSelector(state => state.categoriesState) */
-  const { booksState, categoriesState } = useSelector((state) => state);
+  const { booksState, categoriesState, loginState } = useSelector(
+    (state) => state
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -63,17 +66,54 @@ function App() {
         });
       });
   }, []);
-  if(booksState.pending === true || categoriesState.pending === true) return <Loading />
-  if(booksState.error === true || categoriesState.error === true) return <Error />
+  if (booksState.pending === true || categoriesState.pending === true)
+    return <Loading />;
+  if (booksState.error === true || categoriesState.error === true)
+    return <Error />;
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/add-book" element={<AddBook />} />
-        <Route path="/book-detail/:bookId" element={<BookDetail />} />
-        <Route path="/edit-book/:bookId" element={<EditBook />} />
-        <Route path="/categories" element={<CategoriesHome />} />
-        <Route path="/add-category" element={<AddCategory />} />
+        <Route
+          path="/"
+          element={loginState.success ? <Home /> : <Navigate to={"/login"} />}
+        />
+        <Route
+          path="/add-book"
+          element={
+            loginState.success ? <AddBook /> : <Navigate to={"/login"} />
+          }
+        />
+        <Route
+          path="/book-detail/:bookId"
+          element={
+            loginState.success ? <BookDetail /> : <Navigate to={"/login"} />
+          }
+        />
+        <Route
+          path="/edit-book/:bookId"
+          element={
+            loginState.success ? <EditBook /> : <Navigate to={"/login"} />
+          }
+        />
+        <Route
+          path="/categories"
+          element={
+            loginState.success ? <CategoriesHome /> : <Navigate to={"/login"} />
+          }
+        />
+        <Route
+          path="/add-category"
+          element={
+            loginState.success ? <AddCategory /> : <Navigate to={"/login"} />
+          }
+        />
+        <Route
+          path="/edit-category/:categoryId"
+          element={
+            loginState.success ? <EditCategory /> : <Navigate to={"/login"} />
+          }
+        />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

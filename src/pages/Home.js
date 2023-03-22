@@ -1,10 +1,11 @@
-import React from "react";
+import React,{useEffect} from "react";
 
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import ListBooks from "../components/ListBooks";
 import Button from "../components/Button";
 import { useSelector } from "react-redux";
+import Logout from "../components/Logout";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ const Home = () => {
         </div>
         <ListBooks />
       </div>
+      <Logout />
     </div>
   );
 };

@@ -3,6 +3,7 @@ import React,{useState} from "react";
 import { useSelector,useDispatch } from "react-redux";
 import actionTypes from "../redux/actions/actionTypes";
 import { upperFirstLetter } from "../utils/functions";
+import { Link } from "react-router-dom";
 
 import api from "../api/api";
 import urls from "../api/urls";
@@ -69,9 +70,9 @@ const ListCategories = () => {
                       }} type="button" className="btn btn-danger btn-sm">
                         Sil
                       </button>
-                      <button type="button" className="btn btn-warning btn-sm">
+                      <Link to={`/edit-category/${category.id}`} className="btn btn-warning btn-sm">
                         Güncelle
-                      </button>
+                      </Link>
                     </div>
                   </td>
                 </tr>
